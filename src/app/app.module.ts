@@ -12,12 +12,12 @@ import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
 const appRoutes: Routes = [
-  { path: '/', component: LandingComponent },
-  { path: '/login', component: LoginComponent },
-  { path: '/signup', component: SignupComponent },
-  { path: '/home', component: HomeComponent },
+  { path: '', component: LandingComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent },
   { path: '',
-    redirectTo: '/landing',
+    redirectTo: 'landing',
     pathMatch: 'full' }
 ];
 
