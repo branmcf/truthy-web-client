@@ -1,0 +1,28 @@
+.landing-aligner {
+    height: 85vh;
+}
+
+.landing-aligner-item {
+    min-height: 30%;
+    min-width: 30%;
+    text-align: center;
+}
+
+.landing-aligner-item h1 {
+    font-size: 3.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.landing-su-btn {
+    border: 1px solid rgb(43, 182, 115);
+    background: #ffffff;
+    width:30%;
+    color: rgb(43, 182, 115);
+    height: 3rem;
+}
+
+.landing-su-btn:hover {
+    background:rgb(43, 182, 115);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    color: #ffffff;
+}

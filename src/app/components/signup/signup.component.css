@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/OpenSans-Regular.tff") format("truetype")
+}
+
+.signup-aligner {
+  height: 85vh;
+}
+
+.signup-aligner-item {
+  min-height: 30%;
+  width: 30%;
+}
+  
+.signup-card {
+  background: #fafafa;
+}
+  
+.submit-signup-btn {
+  background: rgb(43, 182, 115);
+  color: #FFFFFF;
+}
+  
+.submit-signup-btn:hover {
+  background: #2C7043;
+  color: #FFFFFF;
+}
+
+.signupForm {
+   margin-bottom: 2%;
+}

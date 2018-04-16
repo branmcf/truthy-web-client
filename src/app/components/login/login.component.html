@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<nav class="navbar navbar-expand-md navbar-light bg-faded">
+    <a class="navbar-brand navy-text" [routerLink]="['/']">
+      <img alt="Truthy" src="./assets/images/logo-v1.png" height="35px" width="135px">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <header class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button class="btn login-btn" type="submit" [routerLink]="['/login']">Login</button>
+        </li>
+      </ul>
+    </header>
+  </nav>
+
+<div class="Aligner login-aligner">
+    <div class="Aligner-item login-aligner-item">
+      <div class="card one-hundred-precent-height login-card">
+        <div class="card-body login-card-body">
+          <h1 class="card-title">Login</h1>
+          <form name="loginform">
+            <div class="form-group">
+              <input [(ngModel)]="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" name="email">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+            </div>
+            <button type="submit" class="btn submit-login-btn" (click)="submitLogin()" [routerLink]="['/home']">Submit</button>
+          </form>
+          <p class="form-paragraph">Don't have an account? Sign up <a [routerLink]="['/signup']">here</a>!</p>
+        </div>
+      </div>
+    </div>
+  </div>
