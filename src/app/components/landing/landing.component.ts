@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  text: Observable<any>;
+
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+  }
+
+  @HostListener('window:load')
+  windowLoaded() {
+    this.touchBase();
+  }
+
+  touchBase() : Observable<any> {
+    this.api.touchBase().subscribe(data => {
+      console.log('SERVER RESPONSE: ', data)
+    })
+    return;
   }
 
 }

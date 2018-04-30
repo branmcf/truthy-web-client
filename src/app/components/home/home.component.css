@@ -1,0 +1,39 @@
+.my-acct-btn {
+    border: 1px solid rgb(43, 182, 115);
+    color: rgb(43, 182, 115);
+}
+
+.my-acct-btn:hover {
+    border: 1px solid rgb(43, 182, 115);
+    background: rgb(43, 182, 115);
+    color: white;
+}
+
+.home-aligner {
+    height: 85vh;
+  }
+.home-aligner-item {
+    min-height: 30%;
+    width: 30%;
+}
+
+.submit-request-btn {
+    background: rgb(43, 182, 115);
+    color: #FFFFFF;
+    width: 70%;
+}
+
+
+
+.home-aligner-item-responder {
+    overflow: auto;
+}
+
+.courses-table {
+    width:100%;
+    table-layout:fixed;
+  }
+  
+  .class-number {
+    text-align: center;
+  }

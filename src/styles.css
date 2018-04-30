@@ -5,6 +5,15 @@
 
 body {
     font-family: Open Sans;
+    /* background-image: url("/assets/images/open-book.png"); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    /* margin-top: 2%; */
+}
+
+.text-centered {
+    text-align: center;
 }
 
 .Aligner {

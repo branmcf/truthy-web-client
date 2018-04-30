@@ -36,74 +36,59 @@
           <button class="btn" type="button" [routerLink]="['/checks', paramId ]">My Checks</button>
         </li>
         <li class="nav-item">
-            <button class="btn" type="button" [routerLink]="['/toolbox', paramId ]">Toolbox</button>
-          </li>
-        <li class="nav-item">
             <button class="btn" type="button" [routerLink]="['/']">Logout</button>
         </li>
       </ul>
     </header>
 </nav>
 <!-- END RESPONDER NAV -->
-
-<!-- START REQUESTER HOME -->
-<div *ngIf="viewType && callsMade" class="Aligner home-aligner">
-  <div *ngIf='!showSubmitMessage' class="Aligner-item home-aligner-item">
-    <h1 class="text-centered">
-      Fact check anything
-    </h1> 
-      <form name="requestForm">
-        <div class="form-group">
-          <label for="requestStatement" class="col-form-label">Statement to check:</label>
-          <input [(ngModel)]="statement" type="text" class="form-control" id="requestStatement" aria-describedby="requestHelp" placeholder="The sky is blue" name="statement">
-        </div>
-        <div class="form-group">
-          <label for="requestExpiry" class="col-form-label">Expiry time:</label>
-          <input [(ngModel)]="expiry" type="date" class="form-control" id="requestExpiry" placeholder="01/01/2020" name="expiry">
-        </div>
-        <div class="form-group">
-           <label for="requestPrice" class="col-form-label">Price:</label>
-          <input [(ngModel)]="price" type="text" class="form-control" id="requestPrice" placeholder="5.50" name="expiry">
-         </div>
-         <div class="form-group text-centered">
-            <button type="submit" class="btn submit-request-btn" (click)="addRequest()">Submit</button>
-         </div>
-      </form>
-  </div>
-  <div *ngIf='showSubmitMessage' class="Aligner-item home-aligner-item">
-    <h1 class="text-centered">
-      Thank you!
-      <button type="submit" class="btn submit-request-btn" (click)="formReset()">Submit another request</button>
-    </h1> 
-  </div>
-</div>
-<!-- END REQUESTER BLOCK -->
-
-<!-- START RESPONDER HOME -->
-<div *ngIf="!viewType && callsMade" class="Aligner home-aligner">
-    <div class="Aligner-item home-aligner-item-responder">
-      <h1 class="text-centered">
-        Current Requests:
-      </h1>
-      <table class="table interest-table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Request Body</th>
-              <th scope="col" class="class-number">Expiration Time</th>
-              <th scope="col" class="class-number">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let row of requestRows">
-                  <td>{{row.body}}</td>
-                  <td>{{row.expiration | date}}</td>
-                  <td>{{row.price}}</td>
+ 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <h1 class="text-centered">
+            Open Requests:
+        </h1>
+          <table class="table interest-table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Request Body</th>
+                  <th scope="col" class="class-number">Expiration Time</th>
+                  <th scope="col" class="class-number">Price</th>
                 </tr>
-          </tbody>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let row of openRequests">
+                      <td>{{row.body}}</td>
+                      <td>{{row.expiration | date}}</td>
+                      <td>{{row.price}}</td>
+                  </tr>
+              </tbody>
+          </table>
+    </div>
+    <div class="col-md-6">
+        <h1 class="text-centered">
+            Completed Requests:
+        </h1>
+          <table class="table interest-table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Request Body</th>
+                  <th scope="col" class="class-number">Expiration Time</th>
+                  <th scope="col" class="class-number">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let row of completeRequests">
+                      <td>{{row.body}}</td>
+                      <td>{{row.expiration | date}}</td>
+                      <td>{{row.price}}</td>
+                  </tr>
+              </tbody>
           </table>
     </div>
   </div>
-  <!-- END RESPONDER BLOCK -->
+</div>
 
 <!-- START REQUESTER MODAL -->
 <div *ngIf="viewType && callsMade" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,4 +116,3 @@
     </div>
   </div>
 <!-- END REQUESTER MODAL -->
-

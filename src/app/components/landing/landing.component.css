@@ -15,14 +15,15 @@
 
 .landing-su-btn {
     border: 1px solid rgb(43, 182, 115);
-    background: #ffffff;
+    background:rgb(43, 182, 115);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     width:30%;
-    color: rgb(43, 182, 115);
+    color: #ffffff;
     height: 3rem;
 }
 
-.landing-su-btn:hover {
+/* .landing-su-btn:hover {
     background:rgb(43, 182, 115);
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     color: #ffffff;
-}
+} */
