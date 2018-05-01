@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Open Sans";
-    src: url("/assets/fonts/OpenSans-Regular.tff") format("truetype")
+    src: url("/assets/fonts/OpenSans-Regular.tff")format("truetype")
   }
 
 body {
@@ -14,6 +14,14 @@ body {
 
 .text-centered {
     text-align: center;
+}
+
+.white-color-text a {
+    color: white !important;
+}
+
+.no-decoration a {
+    text-decoration: none !important;
 }
 
 .Aligner {

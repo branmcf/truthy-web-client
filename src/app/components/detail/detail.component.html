@@ -1,3 +1,90 @@
-<p>
-  detail works!
-</p>
+<!-- START REQUESTER NAV -->
+<nav *ngIf="viewType && callsMade" class="navbar navbar-expand-md navbar-light bg-faded">
+    <a class="navbar-brand navy-text" [routerLink]="['/home', userId]">
+      <img alt="Truthy" src="./assets/images/logo-v1.png" height="35px" width="135px">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <header class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button class="btn" type="button" [routerLink]="['/checks', userId ]">My Checks</button>
+        </li>
+        <li class="nav-item">
+            <button class="btn" type="button" data-toggle="modal" data-target="#exampleModal">Add Funds</button>
+        </li>
+        <li class="nav-item">
+            <button class="btn" type="button" [routerLink]="['/']">Logout</button>
+        </li>
+      </ul>
+    </header>
+</nav>
+<!-- END REQUESTER NAV -->
+
+<!-- START RESPONDER NAV -->
+<nav *ngIf="!viewType && callsMade" class="navbar navbar-expand-md navbar-light bg-faded">
+    <a class="navbar-brand navy-text" [routerLink]="['/home', userId]">
+      <img alt="Truthy" src="./assets/images/logo-v1.png" height="35px" width="135px">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <header class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button class="btn" type="button" [routerLink]="['/checks', userId ]">My Checks</button>
+        </li>
+        <li class="nav-item">
+            <button class="btn" type="button" [routerLink]="['/toolbox', userId ]">Toolbox</button>
+          </li>
+        <li class="nav-item">
+            <button class="btn" type="button" [routerLink]="['/']">Logout</button>
+        </li>
+      </ul>
+    </header>
+</nav>
+<!-- END RESPONDER NAV -->
+
+<!-- START REQUESTER DETAIL BLOCK -->
+<div *ngIf="viewType && callsMade" class="Aligner">
+    <div class="Aligner-item request-detail-aligner-item">
+      <div class="card">
+          <div class="card-header">
+            <h1>Request # {{ request.request_id }}</h1>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Request Body:</h5>
+            <p class="card-text">{{request.body}}</p>
+            <hr>
+            <h5 class="card-title">Request Price:</h5>
+            <p class="card-text">{{request.price}}</p>
+            <hr>
+            <h5 class="card-title">Expiration Time:</h5>
+            <p class="card-text">{{request.expiration | date}}</p>
+            <hr>
+            <h5 class="card-title">Bids:</h5>
+            <table class="table interest-table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Price</th>
+                    <th scope="col" class="class-number">Submission Time</th>
+                    <th scope="col" class="class-number"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bid of bids">
+                        <td>{{bid.price}}</td>
+                        <td>{{bid.created_at | date}}</td>
+                        <a class="cancelBtn"><td><button type="button" class="btn btn-success">Accept bid</button></td></a>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <a class="btn btn-danger white-color-text no-decoration" (click)="deteteRequest()" style="color:white;">Delete Request</a>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <!-- END REQUESTER DETAIL BLOCK -->

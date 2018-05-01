@@ -91,6 +91,7 @@
               <th scope="col">Request Body</th>
               <th scope="col" class="class-number">Expiration Time</th>
               <th scope="col" class="class-number">Price</th>
+              <th scope="col" class="class-number"></th>
             </tr>
           </thead>
           <tbody>
@@ -98,6 +99,7 @@
                   <td>{{row.body}}</td>
                   <td>{{row.expiration | date}}</td>
                   <td>{{row.price}}</td>
+                  <a [routerLink]="['/detail', row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
                 </tr>
           </tbody>
           </table>

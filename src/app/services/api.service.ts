@@ -42,6 +42,11 @@ export class ApiService {
     return this.http.get('http://localhost:5000/allOpenRequests');
   }
 
+  deleteRequestById(reqId) : Observable<any> {
+    // return this.http.get('https://blooming-waters-65278.herokuapp.com/');
+    return this.http.post('http://localhost:5000/deteteRequest', reqId);
+  }
+
   getAllRequestsByUserId(paramId) : Observable<any> {
     // return this.http.get('https://blooming-waters-65278.herokuapp.com/');
     return this.http.post('http://localhost:5000/allRequestsByUserId', paramId);
@@ -50,5 +55,15 @@ export class ApiService {
   getUserById(paramId) : Observable<any> {
     // return this.http.get('https://blooming-waters-65278.herokuapp.com/');
     return this.http.post('http://localhost:5000/oneUser', paramId);
+  }
+
+  getRequestById(paramId) : Observable<any> {
+    // return this.http.get('https://blooming-waters-65278.herokuapp.com/');
+    return this.http.post('http://localhost:5000/getRequestById', paramId);
+  }
+
+  getBidsForRequest(paramId) : Observable<any> {
+    // return this.http.get('https://blooming-waters-65278.herokuapp.com/');
+    return this.http.post('http://localhost:5000/getBidsForRequest', paramId);
   }
 }

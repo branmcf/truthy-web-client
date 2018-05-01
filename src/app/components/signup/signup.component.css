@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
   font-family: "Open Sans";
-  src: url("/assets/fonts/OpenSans-Regular.tff") format("truetype")
-}
+  src: url("/../../fonts/OpenSans-Regular.tff") format("truetype")
+} */
 
 .signup-aligner {
   height: 85vh;
