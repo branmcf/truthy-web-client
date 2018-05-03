@@ -36,6 +36,9 @@
           <button class="btn" type="button" [routerLink]="['/checks', paramId ]">My Checks</button>
         </li>
         <li class="nav-item">
+          <button class="btn" type="button" [routerLink]="['/toolbox', userId ]">Toolbox</button>
+        </li>
+        <li class="nav-item">
             <button class="btn" type="button" [routerLink]="['/']">Logout</button>
         </li>
       </ul>
@@ -43,11 +46,11 @@
 </nav>
 <!-- END RESPONDER NAV -->
  
-<div class="container">
+<div *ngIf="viewType && callsMade" class="container-fluid">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h1 class="text-centered">
-            Open Requests:
+            Open:
         </h1>
           <table class="table interest-table">
               <thead class="thead-dark">
@@ -63,14 +66,37 @@
                       <td>{{row.body}}</td>
                       <td>{{row.expiration | date}}</td>
                       <td>{{row.price}}</td>
-                      <a [routerLink]="['/detail', row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
+                      <a [routerLink]="['/detail', paramId, row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
                   </tr>
               </tbody>
           </table>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h1 class="text-centered">
-            Completed Requests:
+            In Progress:
+        </h1>
+          <table class="table interest-table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Request Body</th>
+                  <th scope="col" class="class-number">Expiration Time</th>
+                  <th scope="col" class="class-number">Price</th>
+                  <th scope="col" class="class-number"></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let row of progressRequests">
+                      <td>{{row.body}}</td>
+                      <td>{{row.expiration | date}}</td>
+                      <td>{{row.price}}</td>
+                      <a [routerLink]="['/detail', paramId, row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
+                  </tr>
+              </tbody>
+          </table>
+    </div>
+    <div class="col-md-4">
+        <h1 class="text-centered">
+            Completed:
         </h1>
           <table class="table interest-table">
               <thead class="thead-dark">
@@ -86,13 +112,64 @@
                       <td>{{row.body}}</td>
                       <td>{{row.expiration | date}}</td>
                       <td>{{row.price}}</td>
-                      <a [routerLink]="['/detail', row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
+                      <a [routerLink]="['/detail', paramId, row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
                   </tr>
               </tbody>
           </table>
     </div>
   </div>
 </div>
+
+<div *ngIf="!viewType && callsMade" class="container">
+    <div class="row">
+      <div class="col-md-6">
+          <h1 class="text-centered">
+              In Progress:
+          </h1>
+            <table class="table interest-table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Request Body</th>
+                    <th scope="col" class="class-number">Expiration Time</th>
+                    <th scope="col" class="class-number">Price</th>
+                    <th scope="col" class="class-number"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of progressRequests">
+                        <td>{{row.body}}</td>
+                        <td>{{row.expiration | date}}</td>
+                        <td>{{row.price}}</td>
+                        <a [routerLink]="['/detail', paramId, row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+      <div class="col-md-6">
+          <h1 class="text-centered">
+              Completed:
+          </h1>
+            <table class="table interest-table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Request Body</th>
+                    <th scope="col" class="class-number">Expiration Time</th>
+                    <th scope="col" class="class-number">Price</th>
+                    <th scope="col" class="class-number"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of completeRequests">
+                        <td>{{row.body}}</td>
+                        <td>{{row.expiration | date}}</td>
+                        <td>{{row.price}}</td>
+                        <a [routerLink]="['/detail', paramId, row.id]" class="cancelBtn"><td><button type="button" class="btn btn-success">Info</button></td></a>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
 
 <!-- START REQUESTER MODAL -->
 <div *ngIf="viewType && callsMade" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

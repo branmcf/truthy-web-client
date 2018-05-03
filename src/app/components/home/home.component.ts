@@ -16,8 +16,11 @@ export class HomeComponent implements OnInit {
   public userId: string;
   public paramId: string;
   public userType: string;
+  public fundingAmount: number;
   public showSubmitMessage: boolean;
   public viewType: number;
+  public balance: number;
+  public goodFunds;
   public callsMade;
   public requestRows = [];
 
@@ -38,12 +41,24 @@ export class HomeComponent implements OnInit {
         if (data.userType.toLowerCase() == 'requester') {
           this.viewType = 1;
           this.callsMade = true;
+          this.balance = data.balance;
         }
         else if (data.userType.toLowerCase() == 'responder') {
           this.viewType = 0;
           this.getAllOpenRequests();
         }
       }
+    })
+  }
+
+  public addFunds() {
+    const formData = {
+      amount: +this.fundingAmount + +this.balance,
+      userId: this.paramId
+    }
+    this.api.addFunds(formData).subscribe(data => {
+      console.log('SERVER RESPONSE: ', data)
+      this.balance = data.newBalance;
     })
   }
 
@@ -57,9 +72,6 @@ export class HomeComponent implements OnInit {
     this.callsMade = true;
   }
     
-
-  
-
   public formReset() {
     this.showSubmitMessage = false;
   }
@@ -69,14 +81,29 @@ export class HomeComponent implements OnInit {
       statement: this.statement,
       expiry: this.expiry,
       price: this.price,
-      userId: this.paramId
+      userId: this.paramId,
+      currentBalance: this.balance
     }
-    this.api.addRequest(formData).subscribe(data => {
-      console.log('SERVER RESPONSE: ', data)
-      if (data.submitted === true) {
-        this.showSubmitMessage = true;
-      }
-    })
+    if ( +this.price > this.balance ) {
+      this.goodFunds = false
+
+    }
+    else if ( +this.price < this.balance ) {
+      this.goodFunds = true
+    }
+    if ( this.goodFunds ) {
+      this.api.addRequest(formData).subscribe(data => {
+        console.log('SERVER RESPONSE: ', data)
+        if (data.submitted === true) {
+          this.balance = data.balance;
+          this.showSubmitMessage = true;
+        }
+      })
+    }
+    else {
+      console.log(this.price, this.balance)
+      alert('Insufficient funds.')
+    }
     return;
   }
 

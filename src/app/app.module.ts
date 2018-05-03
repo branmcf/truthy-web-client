@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home/:id', component: HomeComponent },
-  { path: 'detail/:id', component: DetailComponent },
+  { path: 'detail/:id/:resource_id', component: DetailComponent },
   { path: 'checks/:id', component: ChecksComponent },
   { path: 'toolbox/:id', component: ToolboxComponent },
   { path: '',

@@ -47,11 +47,11 @@
 <!-- END RESPONDER NAV -->
 
 <!-- START REQUESTER DETAIL BLOCK -->
-<div *ngIf="viewType && callsMade" class="Aligner">
+<div *ngIf="callsMade" class="Aligner">
     <div class="Aligner-item request-detail-aligner-item">
       <div class="card">
           <div class="card-header">
-            <h1>Request # {{ request.request_id }}</h1>
+            <h1>Request # {{ resourceId }}</h1>
           </div>
           <div class="card-body">
             <h5 class="card-title">Request Body:</h5>
@@ -63,7 +63,7 @@
             <h5 class="card-title">Expiration Time:</h5>
             <p class="card-text">{{request.expiration | date}}</p>
             <hr>
-            <h5 class="card-title">Bids:</h5>
+            <!-- <h5 class="card-title">Bids:</h5>
             <table class="table interest-table">
                 <thead class="thead-dark">
                   <tr>
@@ -80,8 +80,17 @@
                     </tr>
                 </tbody>
             </table>
-            <hr>
-            <a class="btn btn-danger white-color-text no-decoration" (click)="deteteRequest()" style="color:white;">Delete Request</a>
+            <hr> -->
+            <a *ngIf="viewType" class="btn btn-danger white-color-text no-decoration" (click)="deteteRequest()" style="color:white;">Delete Request</a>
+            <a *ngIf="!viewType && !inProgress" class="btn btn-success white-color-text no-decoration" (click)="markInProgress()" style="color:white;">Check this statement</a>
+            <div *ngIf="!viewType && inProgress">
+              <textarea [(ngModel)]="corpus" class="form-control" rows="10" style="resize: none" name="corpus" id="corpus">{{request.corpus}}</textarea>
+              <br>
+              <div class="row">
+                <div class="col-6"><button type="submit" class="btn btn-primary white-color-text no-decoration" (click)="saveWork()" style="color:white; width: 100%">Save</button></div>
+                <div class="col-6"><a class="btn btn-success white-color-text no-decoration" (click)="markComplete()" style="color:white; width: 100%">Mark as complete</a></div>
+              </div> 
+            </div>
           </div>
         </div>
 
