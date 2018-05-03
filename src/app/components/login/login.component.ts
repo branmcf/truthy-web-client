@@ -22,15 +22,17 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password,
     }
-    this.api.loginUser(formData).subscribe(data => {
-      console.log('SERVER RESPONSE: ', data)
-      if (data.isAuthenticated === true && data.userId) {
-          this.router.navigate(['../', 'home', data.userId]);
-      }
-      else {
-        alert('Invalid Login')
-      }
-    })
+    try {
+      this.api.loginUser(formData).subscribe(data => {
+        // console.log('SERVER RESPONSE: ', data)
+        if (data.isAuthenticated === true && data.userId) {
+            this.router.navigate(['../', 'home', data.userId]);
+        }
+      }, error => alert('Login Error'))
+    }
+    catch (e) {
+      alert('Login Error')
+    }
     return;
   }
 
