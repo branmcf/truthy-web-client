@@ -86,67 +86,67 @@ export class ApiService {
 
   // LOCAL TESTING
   touchBase() : Observable<any> {
-    return this.http.get('http://https://blooming-waters-65278.herokuapp.com/');
+    return this.http.get('https://https://blooming-waters-65278.herokuapp.com/');
 
   }
 
   addUser(formData) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/signup', formData);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/signup', formData);
   }
 
   loginUser(formData) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/login', formData);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/login', formData);
   }
 
   addRequest(formData) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/addRequest', formData);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/addRequest', formData);
   }
 
   getAllRequests() : Observable<any> {
-    return this.http.get('http://https://blooming-waters-65278.herokuapp.com/allRequests');
+    return this.http.get('https://https://blooming-waters-65278.herokuapp.com/allRequests');
   }
 
   getAllOpenRequests() : Observable<any> {
-    return this.http.get('http://https://blooming-waters-65278.herokuapp.com/allOpenRequests');
+    return this.http.get('https://https://blooming-waters-65278.herokuapp.com/allOpenRequests');
   }
 
   deleteRequestById(reqId) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/deteteRequest', reqId);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/deteteRequest', reqId);
   }
 
   getAllRequestsByUserId1(paramId) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/allRequestsByUserId1', paramId);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/allRequestsByUserId1', paramId);
   }
 
   getAllRequestsByUserId2(paramId) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/allRequestsByUserId2', paramId);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/allRequestsByUserId2', paramId);
   }
 
   getUserById(paramId) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/oneUser', paramId);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/oneUser', paramId);
   }
 
   getRequestById(params) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/getRequestById', params);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/getRequestById', params);
   }
 
   getBidsForRequest(paramId) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/getBidsForRequest', paramId);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/getBidsForRequest', paramId);
   }
 
   addFunds(formData) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/addFunds', formData);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/addFunds', formData);
   }
 
   saveCorpus(params) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/saveCorpus', params);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/saveCorpus', params);
   }
 
   markInProgress(params) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/markInProgress', params);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/markInProgress', params);
   }
 
   markComplete(params) : Observable<any> {
-    return this.http.post('http://https://blooming-waters-65278.herokuapp.com/markComplete', params);
+    return this.http.post('https://https://blooming-waters-65278.herokuapp.com/markComplete', params);
   }
 }
